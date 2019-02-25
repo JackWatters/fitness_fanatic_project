@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load static %}
+{% load staticfiles %}
 
 <html>
     <head>
@@ -19,20 +19,23 @@
                     <h1>FitnessFanatic</h1>
             </div>
 
-            {% if user.is_authenticated %}
-            {% else %}
+    {% block top_bar_block %}
+            <!--if user is authenticated
+                else -->
 
             <div id = "login_section" href = "">
                 <div class = "top_links" id = "login_link">
-                    <a href = "">Login</a>
+                    <a href = "{% url 'login' %}">Login</a>
                 </div>
 
                 <div class = "top_links" id = "register_link">
-                    <a href = "">Register</a>
+                    <a href = "{% url 'register' %}">Register</a>
                 </div>
             </div>
-            {% endif %}
+            <!-- endif -->
         </div>
+    {% endblock %}
+    
 
         {% block body_block %}
 

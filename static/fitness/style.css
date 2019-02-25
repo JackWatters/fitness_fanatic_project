@@ -33,6 +33,18 @@ h1{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+h2{
+    color: #FFF;
+    text-align: center;
+    font-size: 38pt;
+}
+
+p{
+    color: #FFF;
+    text-align: center;
+    font-size: 20pt;
+}
+
 
 .top_links a{
     text-decoration: none;

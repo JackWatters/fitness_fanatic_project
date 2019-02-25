@@ -5,11 +5,11 @@ from django.http import HttpResponse
 
 def index(request):
     #return HttpResponse("This is the welcome page <a href='/fitness_fanatics/about/'>About us</a>")
-    return render(request, 'fitness/base.html', context={})
+    return render(request, 'fitness/index.html', context={})
 
 def login(request):
     #return HttpResponse("This is the login page")
-    return render(request, 'fitness/base.html', context={})
+    return render(request, 'fitness/login.html', context={})
 
 def FAQ(request):
     #return HttpResponse("This is the FAQ page")

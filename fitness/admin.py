@@ -1,5 +1,5 @@
 from django.contrib import admin
-from fitness.models import Category, Page
+from fitness.models import Workout, Exercise
 
-admin.site.register(Category)
-admin.site.register(Page)
+admin.site.register(Workout)
+admin.site.register(Exercise)

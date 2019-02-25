@@ -1,22 +1,21 @@
 from django.db import models
 
-## super user name=2314993w, password=Hannah19!
-
-class Category(models.Model):
-    name = models.CharField(max_length=128, unique=True)
-
-    class Meta:
-        verbose_name_plural = 'Categories'
+class Workout(models.Model):
+    title = models.CharField(max_length=128, unique=True)
+    description = models.TextField(max_length=280)
+    image = models.ImageField(upload_to ='workout_images')
+    views = models.IntegerField(default=0)
     
-    def __str__(self): # For Python 2, use __unicode__ too
-        return self.name
+    def __str__(self):
+        return self.title
 
-class Page(models.Model):
-    category = models.ForeignKey(Category)
+class Exercise(models.Model):
+    workout = models.ForeignKey(Workout)
     title = models.CharField(max_length=128)
-    url = models.URLField()
+    description = models.TextField(max_length=280)
+    image = models.ImageField(upload_to ='exercise_images')
     views = models.IntegerField(default=0)
 
-    def __str__(self): # For Python 2, use __unicode__ too
+    def __str__(self):
         return self.title
 
