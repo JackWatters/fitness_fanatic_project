@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-{% load staticfiles %}
+{% load static %}
 
 <html>
     <head>
+            <link rel="stylesheet" type="text/css" href="{% static 'fitness/style.css' %}">
         <title>
             Fitness Fanatic -
             {% block title_block %}
@@ -12,7 +13,30 @@
     </head>
 
     <body>
-        <p>This is a test.</p>
+        <div id = "top_bar">
+            <div id = "logo_section">
+                    <img src="{% static "images/logo.png" %}" alt = "FitnessFanatic logo"/>
+                    <h1>FitnessFanatic</h1>
+            </div>
+
+            {% if user.is_authenticated %}
+            {% else %}
+
+            <div id = "login_section" href = "">
+                <div class = "top_links" id = "login_link">
+                    <a href = "">Login</a>
+                </div>
+
+                <div class = "top_links" id = "register_link">
+                    <a href = "">Register</a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        {% block body_block %}
+
+        {% endblock %}
     </body>
 
 </html>

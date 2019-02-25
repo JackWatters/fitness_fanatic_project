@@ -1,0 +1,64 @@
+body {
+    padding: 10px;
+    background-image: url('../images/background2.jpg');
+}
+
+
+
+#top_bar{
+    height: 10pc;
+}
+
+#logo_section{
+    height: 100%;
+    float: left;
+}
+#logo_section img{
+    max-height: 80%;
+    float:left;    
+}
+
+#login_section{
+    float: right;
+    position:relative;
+    top: 25%;
+    padding-right: 5pt;
+}
+
+h1{
+    color: #FFF;
+    float: right;
+    font-size: 40pt;
+    padding-left: 2pc;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.top_links a{
+    text-decoration: none;
+    font-size: 30pt;
+    padding: 3pc;
+}
+
+
+
+#register_link{
+    float: right;
+    background-color: aliceblue;
+    color: #000
+}
+
+#register_link a{
+    color: #000;
+}
+
+#login_link{
+    float:left;
+    background-color: #000;
+}
+
+#login_link a{
+    color: #EEE;
+}
+
+
