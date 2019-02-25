@@ -5,17 +5,20 @@ from django.http import HttpResponse
 
 def index(request):
     #return HttpResponse("This is the welcome page <a href='/fitness_fanatics/about/'>About us</a>")
-    return render(request, 'fitness/index.html', context={})
+    return render(request, 'fitness/base.html', context={})
 
 def login(request):
-    return HttpResponse("This is the login page")
+    #return HttpResponse("This is the login page")
+    return render(request, 'fitness/base.html', context={})
 
 def FAQ(request):
-    return HttpResponse("This is the FAQ page")
+    #return HttpResponse("This is the FAQ page")
+    return render(request, 'fitness/base.html', context={})
 
 def about(request):
-    return HttpResponse("This is the about us page <a href='/fitness_fanatics/'>Home</a>")
-    
+    #return HttpResponse("This is the about us page <a href='/fitness_fanatics/'>Home</a>")
+    return render(request, 'fitness/base.html', context={})
+
 def register(request):
     return HttpResponse("This is the register page")
 
