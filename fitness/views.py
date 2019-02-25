@@ -4,7 +4,8 @@ from django.http import HttpResponse
 # Create your views here.
 
 def index(request):
-    return HttpResponse("This is the welcome page <a href='/fitness_fanatics/about/'>About us</a>")
+    #return HttpResponse("This is the welcome page <a href='/fitness_fanatics/about/'>About us</a>")
+    return render(request, 'fitness/index.html', context={})
 
 def login(request):
     return HttpResponse("This is the login page")
@@ -17,7 +18,6 @@ def about(request):
     
 def register(request):
     return HttpResponse("This is the register page")
-
 
 def view_post(request):
     return HttpResponse("This is the view post page")
