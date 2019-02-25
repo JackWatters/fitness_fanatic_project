@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Workout(models.Model):
     title = models.CharField(max_length=128, unique=True)
@@ -18,4 +19,9 @@ class Exercise(models.Model):
 
     def __str__(self):
         return self.title
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+    email = models.EmailField()
+    picture = models.ImageField(upload_to='profile_images', blank=True)
 
