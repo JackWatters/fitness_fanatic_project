@@ -35,11 +35,32 @@
             <!-- endif -->
         </div>
     {% endblock %}
-    
 
+
+	
         {% block body_block %}
-
+	
         {% endblock %}
+
+	<div id ="main_links">
+
+		<div class = "column">
+
+			<a href = "{% url 'about' %}">
+				<img src="{% static "images/about.png" %}" alt = "About image"/>
+			</a>
+			<span class="caption">About page</span>
+		</div>
+
+		<div class = "column">		
+			<a href = "{% url 'FAQ' %}">
+				<img src="{% static "images/FAQ.jpg" %}" alt = "FAQ image"/>
+			</a>
+			<span class="caption">FAQ</span>
+		</div>
+
+	</div>
+
     </body>
 
 </html>

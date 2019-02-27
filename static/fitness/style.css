@@ -4,9 +4,12 @@ body {
 }
 
 
-
 #top_bar{
     height: 10pc;
+}
+
+#body_block{
+    height:20pc;
 }
 
 #logo_section{
@@ -100,5 +103,25 @@ p{
 #login_link a{
     color: #EEE;
 }
+
+#main_links {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 200 px;
+}
+#main_links img {
+    width: 200px;
+    height: 200px;
+}
+.caption {
+    display: block;
+    font-size: 30px;
+    color: #FFF;
+}
+
+
+
+
 
 

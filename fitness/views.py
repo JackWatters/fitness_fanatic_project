@@ -17,7 +17,7 @@ def FAQ(request):
 
 def about(request):
     #return HttpResponse("This is the about us page <a href='/fitness_fanatics/'>Home</a>")
-    return render(request, 'fitness/base.html', context={})
+    return render(request, 'fitness/about.html', context={})
 
 def register(request):
     return HttpResponse("This is the register page")
