@@ -1,5 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
+from django.core.urlresolvers import reverse
+from fitness.forms import UserForm, UserProfileForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -7,7 +12,7 @@ def index(request):
     #return HttpResponse("This is the welcome page <a href='/fitness_fanatics/about/'>About us</a>")
     return render(request, 'fitness/index.html', context={})
 
-def login(request):
+def user_login(request):
     #return HttpResponse("This is the login page")
 
     if request.method == 'POST':
@@ -18,7 +23,7 @@ def login(request):
 
         if user:
             if user.is_active:
-                login(request,user)
+                login(request, user)
                 return HttpResponseRedirect(reverse('index'))
             else:
                  return HttpResponse("Your Fitness fanatic account is disabled.")
@@ -29,6 +34,7 @@ def login(request):
     else:
         return render(request, 'fitness/login.html',{})
 
+@login_required
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index')) 
@@ -47,7 +53,7 @@ def register(request):
 
     if request.method == 'POST':
 
-        user_form = UserForm(data=request.POST)
+        user_form = UserForm(data=request.POST) 
         profile_form = UserProfileForm(data=request.POST)
 
         if user_form.is_valid() and profile_form.is_valid():
@@ -71,6 +77,7 @@ def register(request):
         user_form = UserForm()
         profile_form = UserProfileForm()
 
+    
     return render(request,'fitness/register.html',
                 {'user_form': user_form,
                 'profile_form': profile_form,

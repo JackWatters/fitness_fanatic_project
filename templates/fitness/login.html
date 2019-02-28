@@ -13,7 +13,7 @@
         <div id = "login_pane">
             <form id="login_form" method="post" action="{% url 'login' %}">
                     {% csrf_token %}
-                    <span class = "form_label">Email Address:</span> <input class = "login_text" type="text" name="email" value="" size="50" />
+                    <span class = "form_label">Username:</span> <input class = "login_text" type="text" name="username" value="" size="50" />
                     <br /><br />
                     <span class = "form_label">Password:</span><input class = "login_text" type="password" name="password" value="" size="50" />
                     <br /><br />
