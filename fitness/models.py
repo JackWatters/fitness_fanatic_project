@@ -25,3 +25,6 @@ class UserProfile(models.Model):
     email = models.EmailField()
     picture = models.ImageField(upload_to='profile_images', blank=True)
 
+    def __str__(self)
+        return self.user.username
+
