@@ -5,3 +5,4 @@ db.sqlite3
 **/workout_images/*.*
 **/exercise_images/*.*
 **/profile_images/*.*
+.idea
