@@ -5,6 +5,8 @@ from django.contrib.auth import logout
 from django.core.urlresolvers import reverse
 from fitness.forms import UserForm, UserProfileForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+
 
 # Create your views here.
 
@@ -13,8 +15,7 @@ def index(request):
     return render(request, 'fitness/index.html', context={})
 
 def user_login(request):
-    #return HttpResponse("This is the login page")
-
+    
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -59,6 +60,7 @@ def register(request):
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
             user.set_password(user.password)
+            user.save()
 
             profile = profile_form.save(commit=False)
             profile.user = user
@@ -69,7 +71,7 @@ def register(request):
             profile.save()
 
             registered = True
-
+            
         else:
             print(user_form.errors, profile_form.errors)
 
