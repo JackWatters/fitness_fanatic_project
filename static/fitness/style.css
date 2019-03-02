@@ -105,9 +105,12 @@ p{
 }
 
 .profile-icon{
-    max-height: 5pc;
+    max-height: 3pc;
     float: left;
 }
+
+
+
 
 #main_links {
     vertical-align: top;
