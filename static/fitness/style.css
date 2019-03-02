@@ -104,12 +104,20 @@ p{
     color: #EEE;
 }
 
-.profile-icon{
-    max-height: 3pc;
+#profilecard{
+    height: 3pc;
     float: left;
+    padding-right: 5px;
+    padding-bottom: 5px;
 }
 
+.profile-icon{
+    max-height: 100%;
+}
 
+#logged_dropdown{
+    float: right;
+}
 
 
 #main_links {
