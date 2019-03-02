@@ -104,6 +104,11 @@ p{
     color: #EEE;
 }
 
+.profile-icon{
+    max-height: 5pc;
+    float: left;
+}
+
 #main_links {
     vertical-align: top;
     display: inline-block;

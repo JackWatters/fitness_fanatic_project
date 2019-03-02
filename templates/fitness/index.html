@@ -5,15 +5,16 @@
     Home
 {% endblock %}
 
-
-    <!-- if user.is_authenticated 
-     else  -->
-
     {% block body_block %}
+
+    {% if user.is_authenticated %}
+    <h2>Welcome back, {{ user.username }}</h2>
+    {% else %}
     <h2>Welcome to FitnessFanatic</h2>
     <p>
         Login or register to view our catalogue of workouts and exercises. Here are just some of the wonderful exercises submitted by our users.
     </p>
+    {% endif %}
 
     <div id = "home_preview">
         

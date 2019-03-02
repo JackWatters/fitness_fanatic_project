@@ -20,25 +20,30 @@
             </div>
 
     {% block top_bar_block %}
-            <!--if user is authenticated
-			
-                else -->	
-            <div id = "login_section" href = "">
+            <div id = "login_section">
                 <div class = "top_links" id = "login_link">
-					{% if user.is_authenticated %}
-						<a href="{% url 'logout' %}">Logout</a>
-					{% else %}
-						<a href = "{% url 'login' %}">Login</a>
-					{% endif %}
-					
-                </div>
-
-                <div class = "top_links" id = "register_link">
-                    <a href = "{% url 'register' %}">Register</a>
-                </div>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}">Logout</a>
+                    </div>
+                    <div id="profilecard">
+                        {% if user.userprofile.image %}
+                            <img class="profile-icon" src="{{ user.userprofile.image.url }}">
+                        {% else %}
+                            <img class="profile-icon" src="{% static "images/default-profile.jpg" %}"/>
+                        {% endif %}
+                    </div>
+				{% else %}
+                    <a href = "{% url 'login' %}">Login</a>
+                    </div>
+                    <div class = "top_links" id = "register_link">
+                        <a href = "{% url 'register' %}">Register</a>
+                    </div>
+				{% endif %}
             </div>
-            <!-- endif -->
         </div>
+
+
+        
     {% endblock %}
 
 
