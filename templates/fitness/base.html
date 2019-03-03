@@ -32,28 +32,28 @@
 
           <ul class = "navbar-nav mr-auto">
             <li class ="nav-item">
-              <a class="nav-link" href ="{% url 'index' %}">Home</a>
+              <a class="nav-link" href ="{% url 'index' %}"><i class = "fa fa-home"></i> Home</a>
             </li>
             <li class ="nav-item">
-              <a class="nav-link" href ="{% url 'about' %}">About Us</a>
+              <a class="nav-link" href ="{% url 'about' %}"><i class = "fa fa-info"></i> About Us</a>
             </li>
 
             <li class ="nav-item">
-              <a class="nav-link" href ="{% url 'FAQ' %}">FAQs</a>
+              <a class="nav-link" href ="{% url 'FAQ' %}"><i class = "fa fa-question-circle"></i> FAQs</a>
             </li>
           </ul>
 
 
                 {% if user.is_authenticated %}
                     <div class="btn-group navbar-nav">
-                            <button type="button" class="btn btn-dark"><span class = "glyphicon glyphicon-user" aria-hidden="true"><i class = "fa fa-user"></i></span>  {{ user.username }}</button>
+                        <a href = "{% url 'my_account' %}"><button type="button" class="btn btn-dark"><i class = "fa fa-user-circle"></i>  {{ user.username }}</button></a>
                             <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <div class="dropdown-menu">
-                              <a class="dropdown-item" href="#">My Account</a>
-                              <a class="dropdown-item" href="#">My Favourites</a>
-                              <a class="dropdown-item" href="#">New Workout</a>
+                              <a class="dropdown-item" href="{% url 'my_account' %}">My Account</a>
+                              <a class="dropdown-item" href="{% url 'favourites' %}">My Favourites</a>
+                              <a class="dropdown-item" href="{% url 'add_workout' %}">New Workout</a>
                               <a class="dropdown-item" href="{% url 'about' %}">About Us</a>
                               <div class="dropdown-divider"></div>
                               <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>

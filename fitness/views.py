@@ -6,13 +6,15 @@ from django.core.urlresolvers import reverse
 from fitness.forms import UserForm, UserProfileForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from fitness.models import Workout,Exercise
+from fitness.forms import WorkoutForm, UserForm
 
 
 # Create your views here.
 
 def index(request):
-    #return HttpResponse("This is the welcome page <a href='/fitness_fanatics/about/'>About us</a>")
-    return render(request, 'fitness/index.html', context={})
+    workout_list = Workout.objects.order_by('-views')[:3]
+    return render(request, 'fitness/index.html', context={'workouts': workout_list})
 
 def user_login(request):
     
@@ -85,20 +87,31 @@ def register(request):
                 'profile_form': profile_form,
                 'registered': registered})
 
-def view_post(request):
+def view_workout(request):
     return HttpResponse("This is the view post page")
 
 def favourites(request):
     return HttpResponse("This is the favourites page")
 
-def workouts(request):
+def all_workouts(request):
     return HttpResponse("This is the workouts page")
 
 def my_workouts(request):
     return HttpResponse("This is the my workouts page")
 
 def add_workout(request):
-    return HttpResponse("This is the add workout page")
+    form = WorkoutForm()
+
+    if request.method == 'POST':
+        form = WorkoutForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit=True)
+            return index(request)
+        else:
+            print(form.errors)
+    
+    return render(request, 'fitness/add_workout.html', context={})
 
 def my_account(request):
     return HttpResponse("This is the my account page")

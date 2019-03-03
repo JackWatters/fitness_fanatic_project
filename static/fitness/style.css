@@ -146,4 +146,18 @@ p {
 .card{
     width: 18rem !important;
     margin: 40px;
+    background-color:  #27282b !important;
+    height: 400px;
+
+}
+
+.card-body a{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+
+}
+
+h5{
+    color: #FFF;
 }

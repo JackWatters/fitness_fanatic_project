@@ -1,6 +1,5 @@
 {% extends 'fitness/base.html' %}
 {% load staticfiles %}
-{% load fitness_template_tags %}
 
 {% block title_block %}
 Home
@@ -10,12 +9,38 @@ Home
 
 {% if user.is_authenticated %}
 <h2>Welcome back, {{ user.username }}</h2>
+<p>Here are some of the most recently trending posts we thought you'd like.</p>
 {% else %}
 <h2>Welcome to FitnessFanatic</h2>
 <p>
     Login or register to view our catalogue of workouts and exercises. Here are
-    just some of the wonderful exercises submitted by our users.
+    just some of the wonderful workouts submitted by our users.
 </p>
 {% endif %}
-{% get_workout_list %}
+
+{% if workouts %}
+<!--{% load staticfiles %}-->
+<div class="container row card-container">
+    {% for workout in workouts %}
+    <div class="card">
+        {% if workout.image %}
+        <img style = "max-height: 200px" class="card-img-top" src="/media/{{ workout.image }}" alt="Workout Image"/>
+        {% else %}
+        <img style = "max-height: 200px" class="card-img-top" src="{% static 'images/logoflip.png' %}" alt="Workout Image"/>
+        {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">{{ workout.title }}</h5>
+            <p  class="card-text">{{ workout.description }}</p>
+
+            {% if user.is_authenticated %}
+            <a href="{% url 'about' %}" class="btn btn-primary">Read More</a>
+            {% else %}
+            <a href="{% url 'register' %}" class="btn btn-primary">Read More</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
 {% endblock %}

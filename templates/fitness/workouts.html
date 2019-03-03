@@ -1,11 +1,16 @@
 {% if workouts %}
+<!--{% load staticfiles %}-->
 <div class="container row card-container">
     {% for workout in workouts %}
     <div class="card">
-        <img style = "{max-height: 200px}"class="card-img-top" src="/media/{{ workout.image }}" alt="Workout Image">
+        {% if workout.image %}
+        <img style = "max-height: 200px" class="card-img-top" src="/media/{{ workout.image }}" alt="Workout Image"/>
+        {% else %}
+        <img style = "max-height: 200px" class="card-img-top" src="{% static 'images/logoflip.png' %}" alt="Workout Image"/>
+        {% endif %}
         <div class="card-body">
             <h5 class="card-title">{{ workout.title }}</h5>
-            <p  style="color: black"class="card-text">{{ workout.description }}</p>
+            <p  class="card-text">{{ workout.description }}</p>
 
             {% if user.is_authenticated %}
             <a href="{% url 'about' %}" class="btn btn-primary">Read More</a>

@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Workout(models.Model):
-    title = models.CharField(max_length=128, unique=True)
+    length_max = 128
+    title = models.CharField(max_length=length_max, unique=True)
     description = models.TextField(max_length=280,blank=True)
     image = models.ImageField(upload_to ='workout_images',blank=True)
     views = models.IntegerField(default=0)
