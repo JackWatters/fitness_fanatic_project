@@ -1,23 +1,21 @@
 {% extends 'fitness/base.html' %}
-{% load staticfiles%}
+{% load staticfiles %}
+{% load fitness_template_tags %}
 
 {% block title_block %}
-    Home
+Home
 {% endblock %}
 
-    {% block body_block %}
+{% block body_block %}
 
-    {% if user.is_authenticated %}
-    <h2>Welcome back, {{ user.username }}</h2>
-    {% else %}
-    <h2>Welcome to FitnessFanatic</h2>
-    <p>
-        Login or register to view our catalogue of workouts and exercises. Here are just some of the wonderful exercises submitted by our users.
-    </p>
-    {% endif %}
-
-    <div id = "home_preview">
-        
-    </div>
-    {% endblock %}
-    <!-- endif -->
+{% if user.is_authenticated %}
+<h2>Welcome back, {{ user.username }}</h2>
+{% else %}
+<h2>Welcome to FitnessFanatic</h2>
+<p>
+    Login or register to view our catalogue of workouts and exercises. Here are
+    just some of the wonderful exercises submitted by our users.
+</p>
+{% endif %}
+{% get_workout_list %}
+{% endblock %}

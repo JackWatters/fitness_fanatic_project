@@ -6,3 +6,4 @@ db.sqlite3
 **/exercise_images/*.*
 **/profile_images/*.*
 .idea
+__pycache__

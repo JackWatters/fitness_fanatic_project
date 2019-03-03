@@ -1,0 +1,19 @@
+{% if workouts %}
+<div class="container row card-container">
+    {% for workout in workouts %}
+    <div class="card">
+        <img style = "{max-height: 200px}"class="card-img-top" src="/media/{{ workout.image }}" alt="Workout Image">
+        <div class="card-body">
+            <h5 class="card-title">{{ workout.title }}</h5>
+            <p  style="color: black"class="card-text">{{ workout.description }}</p>
+
+            {% if user.is_authenticated %}
+            <a href="{% url 'about' %}" class="btn btn-primary">Read More</a>
+            {% else %}
+            <a href="{% url 'register' %}" class="btn btn-primary">Read More</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
