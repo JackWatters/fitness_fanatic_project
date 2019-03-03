@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 
 class Workout(models.Model):
     length_max = 128
@@ -7,8 +8,12 @@ class Workout(models.Model):
     description = models.TextField(max_length=280,blank=True)
     image = models.ImageField(upload_to ='workout_images',blank=True)
     views = models.IntegerField(default=0)
-    #slug = models.SlugField(unique = True)
+    slug = models.SlugField(unique = True)
     
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Workout, self).save(*args, **kwargs)
+
     def __str__(self):
         return self.title
 

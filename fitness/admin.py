@@ -1,7 +1,9 @@
 from django.contrib import admin
-from fitness.models import Workout, Exercise
-from fitness.models import UserProfile
+from fitness.models import Workout, Exercise, UserProfile
 
-admin.site.register(Workout)
+class WorkoutAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug':('title',)}
+
+admin.site.register(Workout, WorkoutAdmin)
 admin.site.register(Exercise)
 admin.site.register(UserProfile)

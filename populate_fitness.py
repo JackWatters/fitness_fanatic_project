@@ -1,5 +1,5 @@
 import os
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tango_with_django_project.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fitness_fanatic_project.settings')
 
 import django
 django.setup()
@@ -17,7 +17,7 @@ def populate():
             "views": 50,
         },
         "popular workout": {
-            "description": "an example of workout 1",
+            "description": "A very popular workout",
             "views": 3000,
         },
         "unpopular workout": {
