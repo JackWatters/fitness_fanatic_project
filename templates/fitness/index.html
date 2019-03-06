@@ -33,7 +33,7 @@ Home
             <p  class="card-text">{{ workout.description }}</p>
 
             {% if user.is_authenticated %}
-            <a href="{% url 'about' %}" class="btn btn-primary">Read More</a>
+            <a href="{% url 'view_workout' workout.slug %}" class="btn btn-primary">Read More</a>
             {% else %}
             <a href="{% url 'register' %}" class="btn btn-primary">Read More</a>
             {% endif %}
