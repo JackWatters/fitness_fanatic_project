@@ -87,18 +87,33 @@ def register(request):
                 'profile_form': profile_form,
                 'registered': registered})
 
-def view_workout(request):
-    return HttpResponse("This is the view post page")
+def view_workout(request, workout_name_slug):
+    context_dict = {}
 
+    try:
+        workout = Workout.objects.get(slug = workout_name_slug)
+        excercises = Excercise.objects.filter(workout = workout)
+
+        context_dict['excercises'] = excercises
+        context_dict['workout'] = workout
+    except Workout.DoesNotExist:
+        context_dict['excercises'] = None
+        context_dict['workout'] = None
+
+    return render(request, 'rango/category.html', context_dict)
+
+@login_required          
 def favourites(request):
     return HttpResponse("This is the favourites page")
 
 def all_workouts(request):
     return HttpResponse("This is the workouts page")
 
+@login_required  
 def my_workouts(request):
     return HttpResponse("This is the my workouts page")
 
+@login_required  
 def add_workout(request):
     form = WorkoutForm()
 
@@ -113,5 +128,24 @@ def add_workout(request):
     
     return render(request, 'fitness/add_workout.html', context={})
 
+@login_required  
+def add_excercise(request,workout_name_slug):
+    form = ExerciseForm
+
+    form = ExerciseForm()
+    if request.method == 'POST':
+        form = ExerciseForm(reuqest.POST)
+        if form.is_valid():
+            page = form.save(commit=False)
+            page.views = 0
+            page.save()
+            return show_workout(request, workout_name_slug)
+        else:
+            print(form.erros)
+
+    context_dict = {'form':form, 'category': category}
+    return render(request, 'rango/add_page.html', context_dict)
+
+@login_required  
 def my_account(request):
     return HttpResponse("This is the my account page")

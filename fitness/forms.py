@@ -24,3 +24,17 @@ class WorkoutForm(forms.ModelForm):
     class Meta:
         model = Workout
         fields = ('title','description','image','views')
+
+class ExerciseForm(forms.ModelForm):
+
+    title = forms.CharField(max_length = 128, help_text = "Please enter the title of the page.")
+    description = forms.CharField(max_length = 280, help_text = "Please enter the descripton of the exercise")
+
+    image = forms.ImageField()
+    views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
+    class Meta:
+        model = Exercise
+        exclude = ('workout',)
+
+        
+    
