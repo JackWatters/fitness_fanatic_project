@@ -127,7 +127,7 @@ def add_workout(request):
         else:
             print(form.errors)
     
-    return render(request, 'fitness/add_workout.html', context={})
+    return render(request, 'fitness/add_workout.html', {'form':form})
 
 @login_required  
 def add_exercise(request,workout_name_slug):

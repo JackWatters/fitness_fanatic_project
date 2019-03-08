@@ -18,7 +18,7 @@ class WorkoutForm(forms.ModelForm):
     title = forms.CharField(max_length=Workout.length_max,
                            help_text = "Please name your workout.")
     description = forms.CharField(widget=forms.Textarea, max_length=280)
-    image = forms.ImageField()
+    image = forms.ImageField(required=False)
     views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
 
     class Meta:
