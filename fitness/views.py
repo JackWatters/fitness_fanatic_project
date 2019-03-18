@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from fitness.models import Workout,Exercise
 from fitness.forms import WorkoutForm, UserForm, ExerciseForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 
 # Create your views here.
@@ -108,7 +110,18 @@ def favourites(request):
     return HttpResponse("This is the favourites page")
 
 def all_workouts(request):
-    return HttpResponse("This is the workouts page")
+    workout_list = Workout.objects.order_by("-views")
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(workout_list, 6)
+    try:
+        workouts = paginator.page(page)
+    except PageNotAnInteger:
+        workouts = paginator.page(1)
+    except EmptyPage:
+        workouts = paginator.page(paginator.num_pages)
+
+    return render(request, 'fitness/workouts.html', context = {"workouts": workouts})
 
 @login_required  
 def my_workouts(request):

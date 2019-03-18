@@ -4,28 +4,6 @@ body {
     padding-top: 150px;
 }
 
-/*#top_bar{
-    height: 10pc;
-}
-
-#body_block{
-    height:20pc;
-}
-
-#logo{
-    height: 6pc;
-}
-
-/*#logo_section{
-    height: 100%;
-    float: left;
-}*/
-
-/*#logo_section img{
-    max-height: 80%;
-    float:left;    
-}*/
-
 h1 {
     color: #FFF;
     float: right;
@@ -187,4 +165,8 @@ h4 {
 #FAQs p {
     text-align: left;
  
+}
+
+.pagination{
+    justify-content: center;
 }
