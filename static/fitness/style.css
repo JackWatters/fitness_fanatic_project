@@ -161,3 +161,30 @@ p {
 h5{
     color: #FFF;
 }
+
+h4 {
+    color: #FFF;
+}
+
+
+#add_workout {
+    width: 400px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 20px;
+    padding-right: 30px;
+    color: #fff;
+}
+
+#add_workout input {
+    padding: 10px;
+}
+
+#add_workout_wrapper {
+    clear: both;
+}
+
+#FAQs p {
+    text-align: left;
+ 
+}

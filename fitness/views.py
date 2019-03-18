@@ -44,7 +44,7 @@ def user_logout(request):
 
 def FAQ(request):
     #return HttpResponse("This is the FAQ page")
-    return render(request, 'fitness/base.html', context={})
+    return render(request, 'fitness/FAQ.html', context={})
 
 def about(request):
     #return HttpResponse("This is the about us page <a href='/fitness_fanatics/'>Home</a>")
