@@ -24,7 +24,7 @@ class WorkoutForm(forms.ModelForm):
 
     class Meta:
         model = Workout
-        fields = ('title','description','image','views')
+        fields = ('title','description','image','views',)
 
 class ExerciseForm(forms.ModelForm):
 
@@ -36,6 +36,3 @@ class ExerciseForm(forms.ModelForm):
     class Meta:
         model = Exercise
         exclude = ('workout',)
-
-        
-    

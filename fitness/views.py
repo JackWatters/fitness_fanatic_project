@@ -129,10 +129,10 @@ def add_workout(request):
     form = WorkoutForm()
 
     if request.method == 'POST':
-        form = WorkoutForm(request.POST)
+        form = WorkoutForm(request.POST, request.FILES)
 
         if form.is_valid():
-            form.save(commit=True)
+            form.save()
             return index(request)
         else:
             print(form.errors)
