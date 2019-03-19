@@ -7,9 +7,7 @@
 
 {% block body_block %}
 	{% if workout %}
-		<h1>{{ workout.name }}</h1>
-		
-		
+		<h2>{{ workout.title }}</h2>
 		{% if  exercises%}
 			<ul>
 			{% for exercise in exercises %}

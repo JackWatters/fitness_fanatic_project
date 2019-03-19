@@ -7,6 +7,7 @@ All Workouts
 
 {% block body_block %}
 {% if workouts %}
+<h2>Currently Trending Workouts</h2>
 <div class="container text-center">
     {% if workouts.has_other_pages %}
         <ul class="pagination">
@@ -78,6 +79,8 @@ All Workouts
     </ul>
     {% endif %}
     </div>
+{% else %}
+<h1>No Workouts have been uploaded to FitnessFanatics :(</h1>
 {% endif %}
 
 {% endblock %}

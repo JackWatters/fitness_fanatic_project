@@ -90,9 +90,7 @@ def register(request):
                 'registered': registered})
 
 def view_workout(request, workout_name_slug):
-    #return HttpResponse("This is the view_workout page")
     context_dict = {}
-
     try:
         workout = Workout.objects.get(slug = workout_name_slug)
         exercise = Exercise.objects.filter(workout = workout)
@@ -102,7 +100,6 @@ def view_workout(request, workout_name_slug):
     except Workout.DoesNotExist:
         context_dict['exercise'] = None
         context_dict['workout'] = None
-
     return render(request, 'fitness/view_workout.html', context_dict)
 
 @login_required          
