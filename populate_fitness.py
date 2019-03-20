@@ -1,15 +1,16 @@
-import os
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fitness_fanatic_project.settings')
-
+from fitness.models import Workout, Exercise
 import django
+import os
+os.environ.setdefault('DJANGO_SETTINGS_MODULE',
+                      'fitness_fanatic_project.settings')
+
 django.setup()
 
-from fitness.models import Workout, Exercise
 
 def populate():
     workouts = {
-        "workout1": {
-            "description": "an example of workout 1",
+        "The Ultimate Half Marathon": {
+            "description": "This half-marathon workout is designed to test the athlete 2-3 months before a half-marathon race. It consists of breaking the marathon into six-hour intervals",
             "views": 36,
         },
         "workout2": {
@@ -27,12 +28,14 @@ def populate():
     }
 
     for workout, workoutInfo in workouts.items():
-        w = add_workout(workout, workoutInfo["description"], workoutInfo["views"])
+        w = add_workout(
+            workout, workoutInfo["description"], workoutInfo["views"])
+
 
 def add_workout(title, description, views):
-    w = Workout.objects.get_or_create(title=title, description=description, views=views)[0]
+    w = Workout.objects.get_or_create(
+        title=title, description=description, views=views)[0]
     w.save()
-
 
 
 if __name__ == '__main__':

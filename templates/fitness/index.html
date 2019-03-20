@@ -23,16 +23,19 @@ Home
     {% for workout in workouts %}
     <div class="card">
         {% if workout.image %}
-        <img style = "max-height: 200px" class="card-img-top" src="/media/{{ workout.image }}" alt="Workout Image"/>
+        <img style="max-height: 200px" class="card-img-top" src="/media/{{
+            workout.image }}" alt="Workout Image" />
         {% else %}
-        <img style = "max-height: 200px" class="card-img-top" src="{% static 'images/logoflip.png' %}" alt="Workout Image"/>
+        <img style="max-height: 200px" class="card-img-top" src="{% static
+            'images/logoflip.png' %}" alt="Workout Image" />
         {% endif %}
         <div class="card-body">
             <h5 class="card-title">{{ workout.title }}</h5>
-            <p  class="card-text">{{ workout.description }}</p>
+            <p class="card-text">{{ workout.description }}</p>
 
             {% if user.is_authenticated %}
-            <a href="{% url 'view_workout' workout.slug %}" class="btn btn-primary">Read More</a>
+            <a href="{% url 'view_workout' workout.slug %}" class="btn
+                btn-primary">Read More</a>
             {% else %}
             <a href="{% url 'register' %}" class="btn btn-primary">Read More</a>
             {% endif %}
