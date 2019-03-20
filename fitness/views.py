@@ -7,7 +7,7 @@ from fitness.forms import UserForm, UserProfileForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from fitness.models import Workout, Exercise
-from fitness.forms import WorkoutForm, UserForm
+from fitness.forms import WorkoutForm, UserForm, ExerciseForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
