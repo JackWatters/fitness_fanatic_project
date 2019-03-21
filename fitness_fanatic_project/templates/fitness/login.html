@@ -1,0 +1,28 @@
+{% extends 'fitness/base.html' %}
+{% load staticfiles%}
+
+{% block title_block %}
+    Login
+{% endblock %}
+
+    {% block top_bar_block%}
+    {% endblock %}
+
+    {% block body_block %}
+    <div id = login_wrapper>
+        <div id = "login_pane">
+            <form id="login_form" method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <span class = "form_label">Username:</span> <input class = "login_text" type="text" name="username" value="" size="50" />
+                    <br /><br />
+                    <span class = "form_label">Password:</span><input class = "login_text" type="password" name="password" value="" size="50" />
+                    <br /><br />
+                    <input type="submit" value="submit" />
+            </form>
+        </div>
+    </div>
+    <div id = "login-message">
+        <h2>Login to see a whole new world of fitness!</h2>
+    </div>
+    {% endblock %}
+    <!-- endif -->

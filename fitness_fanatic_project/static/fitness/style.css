@@ -1,0 +1,168 @@
+body {
+    padding: 10px;
+    background-image: url('../images/background2.jpg');
+    padding-top: 150px;
+}
+
+h1 {
+    color: #FFF;
+    float: right;
+    font-size: 40pt;
+    padding-left: 2pc;
+    font-family: Arial, Helvetica, sans-serif;
+    vertical-align: middle;
+}
+
+h2 {
+    color: #FFF;
+    text-align: center;
+    font-size: 38pt;
+}
+
+p {
+    color: #FFF;
+    text-align: center;
+}
+
+.form_label {
+    color: #FFF;
+    font-size: 30pt;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#login_pane {
+    float: left;
+    width: 400px;
+    background-color: #212121;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 20px;
+    padding-right: 30px;
+}
+
+#login_pane input {
+    padding: 5px;
+}
+
+#login_wrapper {
+    clear: both;
+}
+
+.login_text {
+    width: 100%;
+    clear: both;
+    font-size: 20pt;
+}
+
+#register_link {
+    float: right;
+    background-color: aliceblue;
+    color: #000
+}
+
+.navbar-nav li a {
+    color: #FFF !important;
+}
+
+.navbar-nav li a:hover {
+    color: #FFF !important;
+    background-color: #27282b !important;
+}
+
+.navbar-text {
+    font-size: 25pt !important;
+    padding-right: 1em;
+}
+
+.navbar-brand img {
+    height: 70px !important;
+    padding: 0 !important;
+}
+
+#profilecard {
+    height: 3pc;
+    float: right;
+    padding-right: 5px;
+    padding-bottom: 5px;
+}
+
+.navbar-brand img {
+    height: 6pc;
+    padding: 1pc;
+}
+
+.profile-icon {
+    max-height: 100%;
+}
+
+#logged_dropdown {
+    float: right;
+}
+
+#main_links {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 200 px;
+}
+
+#main_links img {
+    width: 200px;
+    height: 200px;
+}
+
+.caption {
+    display: block;
+    font-size: 30px;
+    color: #FFF;
+}
+
+.card-container {
+    margin: auto !important;
+}
+
+.card {
+    width: 18rem !important;
+    margin: 40px;
+    background-color: #27282b !important;
+    height: 400px;
+}
+
+.card-body a {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+h5 {
+    color: #FFF;
+}
+
+h4 {
+    color: #FFF;
+}
+
+#add_workout {
+    width: 400px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 20px;
+    padding-right: 30px;
+    color: #fff;
+}
+
+#add_workout input {
+    padding: 10px;
+}
+
+#add_workout_wrapper {
+    clear: both;
+}
+
+#FAQs p {
+    text-align: left;
+}
+
+.pagination {
+    justify-content: center;
+}

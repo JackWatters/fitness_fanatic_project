@@ -1,0 +1,54 @@
+{% extends 'fitness/base.html' %}
+{% load staticfiles%}
+
+{% block title_block %}
+    FAQ
+{% endblock %}
+
+
+    <!-- if user.is_authenticated 
+     else  -->
+
+    {% block body_block %}
+    <h2>FAQs</h2>
+
+    <div id = FAQs> 
+
+    <h4> Who are we? </h4>
+    <p>
+	It started with 4 lads from Glasgow with a passion for fitness. We wanted to create a specialised platform for like minded people to exchange tips and routines, and here we are!
+    </p>
+    <br>
+
+    <h4> Membership </h4>
+    <p>
+	We are one of the fastest growing social media platforms of this decade. "A platform like no other" - Donald J Trump.
+    </p>
+    <br>
+
+
+    <h4> Does it cost to sign up? </h4>
+    <p>
+	Signing up to fitness fanatic is completely free, simply sign up using the Register link at the top right hand side of the webpage. 
+    </p>
+    <br>
+    
+    <h4> How does it work? </h4>
+    <p>
+	Once you've registered, you can view and post workouts and tips to fellow fitness fanatics! You can also upvote/downvote other workouts and leave comments 
+        to improve the workout. Think of it as the social media for gym goers. 
+    </p>
+    <br>
+
+    <h4> Who funds us? </h4>
+    <p>
+	We are partially funded by the Russian Government. Don't worry your data is safe.
+    </p>
+    <br>
+
+    </div>
+
+
+
+    {% endblock %}
+    <!-- endif -->

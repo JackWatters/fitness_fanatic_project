@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html>
+    <head>
+
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        {% block extra_scripts %}
+        {% endblock %}
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'fitness/style.css' %}">
+        <title>
+            Fitness Fanatic -
+            {% block title_block %}
+                Get fit!
+            {% endblock %}
+        </title>
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+          <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
+            <span class = "navbar-toggler-icon"></span>
+          </button>
+
+          <div class = "collapse navbar-collapse" id="collapse_target">
+          <a class = "navbar-brand"  href="{% url 'index' %}"> <img src="{% static "images/logoflip.png" %}"/> </a>
+          <span class = "navbar-text">FitnessFanatics</span>
+
+          <ul class = "navbar-nav mr-auto">
+            <li class ="nav-item">
+              <a class="nav-link" href ="{% url 'index' %}"><i class = "fa fa-home"></i> Home</a>
+            </li>
+            <li class ="nav-item">
+              <a class="nav-link" href ="{% url 'about' %}"><i class = "fa fa-info"></i> About Us</a>
+            </li>
+
+            <li class ="nav-item">
+              <a class="nav-link" href ="{% url 'FAQ' %}"><i class = "fa fa-question-circle"></i> FAQs</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class ="nav-item">
+              <a class="nav-link" href ="{% url 'workouts' %}"><i class="fas fa-heartbeat"></i> Trending Workouts</a>
+            </li>
+
+            <li class ="nav-item">
+              <a class="nav-link" href ="{% url 'nearby_gyms' %}"><i class="fas fa-dumbbell"></i> Nearby Gyms</a>
+            </li>
+            {% endif %}
+          </ul>
+
+
+                {% if user.is_authenticated %}
+                    <div class="btn-group navbar-nav">
+                        <a href = "{% url 'my_account' %}"><button type="button" class="btn btn-dark"><i class = "fa fa-user-circle"></i>  {{ user.username }}</button></a>
+                            <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="{% url 'my_account' %}">My Account</a>
+                              <a class="dropdown-item" href="{% url 'favourites' %}">My Favourites</a>
+							  <a class="dropdown-item" href="{% url 'my_workouts' %}">My Workouts</a>
+                              <a class="dropdown-item" href="{% url 'add_workout' %}">New Workout</a>
+                              <a class="dropdown-item" href="{% url 'about' %}">About Us</a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                            </div>
+                          </div>
+        {% else %}
+                    <ul class = "navbar-nav ml-auto">
+                      <li class ="nav-item">
+                        <a class="nav-link" href ="{% url 'login' %}">Login</a>
+                      </li>
+
+                      <li class ="nav-item">
+                          <a class="nav-link" href ="{% url 'register' %}">Register</a>
+                        </li>
+                    </ul>
+
+				{% endif %}
+        </div>
+		
+        </nav>
+
+
+	
+        {% block body_block %}
+        {% endblock %}
+    </body>
+</html>
