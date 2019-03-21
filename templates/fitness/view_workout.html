@@ -7,25 +7,29 @@
 
 {% block body_block %}
 <style>
-div.a{
-	text-align: center;
-}
+div.center{
 
+	width: 500px;
+	align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
 </style>
 
 	{% if workout %}
 		
 		<h2>{{ workout.title }}</h2>
 		
-		<div class = "a">
+		<div class = "center">
 		{% if workout.image %}
         <img style = "max-width: 500px", class="card-img-top" src="/media/{{ workout.image }}" alt="Workout Image"/>
         {% else %}
         <img style = "max-width: 500px" src="{% static 'images/logoflip.png' %}" alt="Workout Image"/>
         {% endif %}
-		</div>
 		
 		<p>{{ workout.description }}</p>
+		
+		</div>
 		
 	{% else %}
 		<h2>The specified workout does not exist!</h2>
