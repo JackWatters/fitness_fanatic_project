@@ -131,8 +131,8 @@ def all_workouts(request):
 
 @login_required
 def my_workouts(request):
-    return HttpResponse("This is the my workouts page")
-
+    workout_list = Workout.objects.order_by('author')
+    return render(request, 'fitness/my_workouts.html', context={'workouts': workout_list})
 
 @login_required
 def add_workout(request):
@@ -140,7 +140,7 @@ def add_workout(request):
 
     if request.method == 'POST':
         form = WorkoutForm(request.POST, request.FILES)
-
+        
         if form.is_valid():
             form.save()
             return index(request)

@@ -25,6 +25,9 @@ New Workout
 			{{ field }}
 			<br>
 			{% endfor %}
+			
+			<input class = "author" type="hidden" name="author" value="{{ user.id }}" size="50" />
+			
 			<input type="submit" name="submit" value="Create Workout" />
 		</form>
 	</div>
