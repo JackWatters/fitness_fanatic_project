@@ -111,6 +111,8 @@ def view_workout(request, workout_name_slug):
 def favourites(request):
     return HttpResponse("This is the favourites page")
 
+def nearby_gyms(request):
+    return render(request, 'fitness/nearby_gyms.html', {})
 
 def all_workouts(request):
     workout_list = Workout.objects.order_by("-views")

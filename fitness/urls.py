@@ -19,6 +19,7 @@ urlpatterns = [
     url(r'^my_workouts/$', views.my_workouts, name='my_workouts'),
 
     url(r'^add_workout/$', views.add_workout, name='add_workout'),
+    url(r'^gyms/$', views.nearby_gyms, name='nearby_gyms'),
 
     url(r'^favourites/$', views.favourites, name='favourites'),
     url(r'^my_account/$', views.my_account, name='my_account'),
