@@ -26,4 +26,6 @@ urlpatterns = [
     url(r'^logout/$', views.user_logout, name='logout'),
 
     url(r'^like/$', views.like_workout, name='like_workout'),
+
+    url(r'^favourite/$', views.favourite_workout, name='favourite_workout'),
 ]

@@ -12,7 +12,8 @@ class Workout(models.Model):
     slug = models.SlugField(unique = True)
 
     likes = models.ManyToManyField(User, related_name = 'likes', blank = True)
-
+    favourite = models.ManyToManyField(User, related_name = 'favourite', blank = True)
+    
     author = models.IntegerField(default=0)
     
     def save(self, *args, **kwargs):
@@ -40,6 +41,8 @@ class Exercise(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
+
+    favourites = models.ManyToManyField(Workout, related_name = 'favourites', blank = True)
     
     picture = models.ImageField(upload_to='profile_images', blank=True)
 

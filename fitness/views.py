@@ -104,20 +104,21 @@ def view_workout(request, workout_name_slug):
         is_liked = False
         if workout.likes.filter(id=request.user.id).exists():
             is_liked = True
+        
+        is_favourite = False
+        if workout.favourite.filter(id=request.user.id).exists():
+            print("is fav")
+            is_favourite = True
 
         context_dict['exercise'] = exercise
         context_dict['workout'] = workout
         context_dict['is_liked'] = is_liked
         context_dict['total_likes'] = workout.total_likes()
+        context_dict['is_favourite'] = is_favourite
     except Workout.DoesNotExist:
         context_dict['exercise'] = None
         context_dict['workout'] = None
     return render(request, 'fitness/view_workout.html', context_dict)
-
-
-@login_required
-def favourites(request):
-    return HttpResponse("This is the favourites page")
 
 def nearby_gyms(request):
     return render(request, 'fitness/nearby_gyms.html', {})
@@ -139,7 +140,7 @@ def all_workouts(request):
 
 @login_required
 def my_workouts(request):
-    workout_list = Workout.objects.order_by('author')
+    workout_list = Workout.objects.filter(author = request.user.id)
     return render(request, 'fitness/my_workouts.html', context={'workouts': workout_list})
 
 @login_required
@@ -198,6 +199,32 @@ def like_workout(request):
         is_liked = True 
     return HttpResponseRedirect(workout.get_absolute_url())
 
+def favourite_workout(request):
+    
+    workout = get_object_or_404(Workout, id=request.POST.get('workout_id'))
+    is_favourite = False
+
+    if workout.favourite.filter(id=request.user.id).exists():
+        print("unfavoured")
+        workout.favourite.remove(request.user)
+        is_favourite = False
+    else:
+        workout.favourite.add(request.user)
+        print("favourited")
+        is_favourite  = True
+        
+    return HttpResponseRedirect(workout.get_absolute_url())
+
+@login_required
+def favourites(request):
+
+    workout_list = Workout.objects.filter(favourite = request.user.id)
+
+    return render(request, 'fitness/favourites.html', context={'workouts': workout_list})
+
+
+            
+    
 
 
 

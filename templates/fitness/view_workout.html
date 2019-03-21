@@ -19,7 +19,7 @@ div.center{
 	{% if workout %}
 		
 		<h2>{{ workout.title }}</h2>
-		<h2>{{ workout.views }}</h2>
+		
 		
 		<div class = "center">
 		{% if workout.image %}
@@ -27,24 +27,47 @@ div.center{
         {% else %}
         <img style = "max-width: 500px" src="{% static 'images/logoflip.png' %}" alt="Workout Image"/>
         {% endif %}
-		
-		<p>{{ workout.description }}</p>
-		
 		</div>
 		
 		
-		<h5>{{ total_likes }} Likes </h5>
 		
-		<form action = "{% url 'like_workout' %}" method = "post">
+	<div class = "center">	
+		<div style = "float: left; width: 33%;">
+			<form action = "{% url 'like_workout' %}" method = "post">
+				{% csrf_token %}
+			
+				{% if is_liked %}
+				<button type = "submit" name="workout_id" value = "{{ workout.id }}" class = "btn btn-danger">Unlike</button>
+				{% else %}
+				<button type = "submit" name="workout_id" value = "{{ workout.id }}" class = "btn btn-primary">Like</button>
+				{% endif %}
+			
+			</form>
+		</div>
+		
+		
+		
+		<div style ="float: right;">
+		<form action = "{% url 'favourite_workout' %}" method = "post">
 			{% csrf_token %}
 			
-			{% if is_liked %}
-			<button type = "submit" name="workout_id" value = "{{ workout.id }}" class = "btn btn-danger">Unlike</button>
+			{% if is_favourite %}
+			<button type = "submit" name="workout_id" value = "{{ workout.id }}" class = "btn btn-danger">Unfavourite</button>
 			{% else %}
-			<button type = "submit" name="workout_id" value = "{{ workout.id }}" class = "btn btn-primary">Like</button>
+			<button type = "submit" name="workout_id" value = "{{ workout.id }}" class = "btn btn-primary">favourite</button>
 			{% endif %}
 			
 		</form>
+		</div>
+		
+		<br>
+		<br>
+		<p>{{ workout.description }}</p>
+	</div>
+	
+	
+	
+	
 		
 	{% else %}
 		<h2>The specified workout does not exist!</h2>
