@@ -99,8 +99,13 @@ def view_workout(request, workout_name_slug):
     context_dict = {}
     try:
         workout = Workout.objects.get(slug=workout_name_slug)
-        exercise = Exercise.objects.filter(workout=workout)
-
+        try:
+            author = User.objects.get(id = workout.author)
+            context_dict['author'] = author
+        except:
+            author = None
+            
+            
         is_liked = False
         if workout.likes.filter(id=request.user.id).exists():
             is_liked = True
@@ -109,14 +114,14 @@ def view_workout(request, workout_name_slug):
         if workout.favourite.filter(id=request.user.id).exists():
             print("is fav")
             is_favourite = True
-
-        context_dict['exercise'] = exercise
-        context_dict['workout'] = workout
-        context_dict['is_liked'] = is_liked
-        context_dict['total_likes'] = workout.total_likes()
-        context_dict['is_favourite'] = is_favourite
+            
+        context_dict = {'author' : author,
+                        'workout' : workout,
+                        'is_liked' : is_liked,
+                        'total_likes' : workout.total_likes(),
+                        'is_favourite' : is_favourite,}
+        
     except Workout.DoesNotExist:
-        context_dict['exercise'] = None
         context_dict['workout'] = None
     return render(request, 'fitness/view_workout.html', context_dict)
 

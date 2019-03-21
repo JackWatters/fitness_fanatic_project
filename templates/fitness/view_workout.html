@@ -21,6 +21,10 @@ div.center{
 		<h2>{{ workout.title }}</h2>
 		
 		
+		{% if author %}
+		<h4 align = "center">created by: {{ author }}</h4>
+		{% endif %}
+		
 		<div class = "center">
 		{% if workout.image %}
         <img style = "max-width: 500px", class="card-img-top" src="/media/{{ workout.image }}" alt="Workout Image"/>
@@ -37,15 +41,13 @@ div.center{
 				{% csrf_token %}
 			
 				{% if is_liked %}
-				<button type = "submit" name="workout_id" value = "{{ workout.id }}" class = "btn btn-danger">Unlike</button>
+				<button type = "submit" name="workout_id" value = "{{ workout.id }}" class = "btn btn-danger">{{ total_likes }} Like{{ total_likes|pluralize }}</button>
 				{% else %}
-				<button type = "submit" name="workout_id" value = "{{ workout.id }}" class = "btn btn-primary">Like</button>
+				<button type = "submit" name="workout_id" value = "{{ workout.id }}" class = "btn btn-primary">{{ total_likes }} Like{{ total_likes|pluralize }}</button>
 				{% endif %}
 			
 			</form>
 		</div>
-		
-		
 		
 		<div style ="float: right;">
 		<form action = "{% url 'favourite_workout' %}" method = "post">
