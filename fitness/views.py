@@ -15,7 +15,7 @@ from django.shortcuts import get_object_or_404
 # Create your views here.
 
 def index(request):
-    workout_list = Workout.objects.order_by('-views')[:3]
+    workout_list = Workout.objects.order_by('-likes')[:3]
     return render(request, 'fitness/index.html', context={'workouts': workout_list})
 
 
@@ -123,7 +123,7 @@ def nearby_gyms(request):
     return render(request, 'fitness/nearby_gyms.html', {})
 
 def all_workouts(request):
-    workout_list = Workout.objects.order_by("-views")
+    workout_list = Workout.objects.order_by("-likes")
     page = request.GET.get('page', 1)
 
     paginator = Paginator(workout_list, 6)
@@ -139,7 +139,7 @@ def all_workouts(request):
 
 @login_required
 def my_workouts(request):
-    workout_list = Workout.objects.order_by('author')[:3]
+    workout_list = Workout.objects.order_by('author')
     return render(request, 'fitness/my_workouts.html', context={'workouts': workout_list})
 
 @login_required
