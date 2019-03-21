@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
+from django.core.urlresolvers import reverse
 
 class Workout(models.Model):
     length_max = 128
@@ -10,6 +11,8 @@ class Workout(models.Model):
     views = models.IntegerField(default=0)
     slug = models.SlugField(unique = True)
 
+    likes = models.ManyToManyField(User, related_name = 'likes', blank = True)
+
     author = models.IntegerField(default=0)
     
     def save(self, *args, **kwargs):
@@ -18,6 +21,12 @@ class Workout(models.Model):
     
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('view_workout', args=[self.slug])
+
+    def total_likes(self):
+        return self.likes.count()
 
 class Exercise(models.Model):
     workout = models.ForeignKey(Workout)

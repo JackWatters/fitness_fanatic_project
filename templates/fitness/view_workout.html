@@ -31,6 +31,20 @@ div.center{
 		
 		</div>
 		
+		
+		<h5>{{ total_likes }} Likes </h5>
+		
+		<form action = "{% url 'like_workout' %}" method = "post">
+			{% csrf_token %}
+			
+			{% if is_liked %}
+			<button type = "submit" name="workout_id" value = "{{ workout.id }}" class = "btn btn-danger">Unlike</button>
+			{% else %}
+			<button type = "submit" name="workout_id" value = "{{ workout.id }}" class = "btn btn-primary">Like</button>
+			{% endif %}
+			
+		</form>
+		
 	{% else %}
 		<h2>The specified workout does not exist!</h2>
 	{% endif %}

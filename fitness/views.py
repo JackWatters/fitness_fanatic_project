@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from fitness.models import Workout, Exercise
 from fitness.forms import WorkoutForm, UserForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
@@ -94,13 +95,20 @@ def register(request):
 
 
 def view_workout(request, workout_name_slug):
+    
     context_dict = {}
     try:
         workout = Workout.objects.get(slug=workout_name_slug)
         exercise = Exercise.objects.filter(workout=workout)
 
+        is_liked = False
+        if workout.likes.filter(id=request.user.id).exists():
+            is_liked = True
+
         context_dict['exercise'] = exercise
         context_dict['workout'] = workout
+        context_dict['is_liked'] = is_liked
+        context_dict['total_likes'] = workout.total_likes()
     except Workout.DoesNotExist:
         context_dict['exercise'] = None
         context_dict['workout'] = None
@@ -131,7 +139,7 @@ def all_workouts(request):
 
 @login_required
 def my_workouts(request):
-    workout_list = Workout.objects.order_by('author')
+    workout_list = Workout.objects.order_by('author')[:3]
     return render(request, 'fitness/my_workouts.html', context={'workouts': workout_list})
 
 @login_required
@@ -176,3 +184,38 @@ def add_exercise(request, workout_name_slug):
 @login_required
 def my_account(request):
     return HttpResponse("This is the my account page")
+
+
+def like_workout(request):
+    workout = get_object_or_404(Workout, id=request.POST.get('workout_id'))
+    is_liked = False
+    
+    if workout.likes.filter(id=request.user.id).exists():
+        workout.likes.remove(request.user)
+        is_liked = False
+    else:
+        workout.likes.add(request.user)
+        is_liked = True 
+    return HttpResponseRedirect(workout.get_absolute_url())
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+    
+
+
+
+
+
+
